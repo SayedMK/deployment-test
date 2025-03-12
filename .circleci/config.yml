@@ -21,7 +21,7 @@ jobs:
     steps:
       - run:
           name: Deploy to Render Staging
-         
+          # TODO: What is happening in the following command?
           command: |
             echo "Deploying to Render Staging"
             curl $RENDER_STAGING_DEPLOYHOOK
@@ -34,10 +34,10 @@ workflows:
           name: run-component-tests
           cypress-command: npx cypress run --component
       - deploy-to-render-staging:
-         
+          
           requires:
             - run-component-tests
-         
+          
           filters:
             branches:
               only: main
